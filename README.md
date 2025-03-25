@@ -1,9 +1,12 @@
 # Ex02 Django ORM Web Application
-# Date:
+# Date:25\03\2025
 # AIM
 To develop a Django application to store and retrieve data from a bank loan database using Object Relational Mapping(ORM).
 
 # ENTITY RELATIONSHIP DIAGRAM
+
+![alt text](<Screenshot 2025-03-25 111136.png>)
+
 ## DESIGN STEPS
 ## STEP 1:
 Clone the problem from GitHub
@@ -18,35 +21,25 @@ Enter the code for admin.py and models.py
 Execute Django admin and create details for 10 books
 
 # PROGRAM
+```
+from django.contrib import admin
+from .models import Movie,MovieAdmin
+admin.site.register(Movie,MovieAdmin)
 
-# bank_loan_app\models.py
+from django.db import models
+from django.contrib import admin
+class Movie(models.Model):
+	Name=models.CharField(max_length=20,primary_key=True)
+	Genre=models.CharField(max_length=20)
+	Cost=models.IntegerField()
+	Run=models.FloatField()
+	Rating=models.IntegerField()
+class MovieAdmin(admin.ModelAdmin):
+	list_display=("Name","Genre","Cost","Run","Rating")
 
-    from django.db import models
-    from django.contrib import admin
-    
-    class Loan(models.Model):
-        loan_id = models.AutoField(primary_key=True)
-        customer_name = models.CharField(max_length=100)
-        loan_amount = models.DecimalField(max_digits=10, decimal_places=2)
-        interest_rate = models.DecimalField(max_digits=5, decimal_places=2)
-        loan_term = models.IntegerField()
-        disbursement_date = models.DateField()
-    
-    class LoanAdmin(admin.ModelAdmin):
-    list_display=('loan_id','customer_name','loan_amount','interest_rate','loan_term','disbursement_date')
-
-# bank_loan_app\admin.py
-
-
-    from django.contrib import admin
-    from .models import Loan,LoanAdmin
-    
-    admin.site.register(Loan,LoanAdmin)
-
-# ER Diagram
-
+```
 # OUTPUT
-Include the screenshot of your admin page.
+![alt text](<Screenshot 2025-03-25 105347.png>)
 
 # RESULT
 Thus the program for creating a database using ORM hass been executed successfully
